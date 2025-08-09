@@ -5,46 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="../css/admin_styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-lg-2 bg-light sidebar">
-                <h4 class="mt-3">Admin Panel</h4>
-                <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link active" href="admin-dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-daily-orders.html">Daily Orders</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-ingredients.html">Ingredients</a></li>
-                </ul>
+    <div class="admin-container">
+        <!-- Sidebar Navigation -->
+        <nav class="admin-sidebar">
+            <h4>Canteen Admin</h4>
+            <ul>
+                <li class="active"><a href="admin_dashboard.html"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+                <li><a href="admin_orders.html"><i class="bi bi-list-check"></i> Orders</a></li>
+                <li><a href="admin_menu.html"><i class="bi bi-egg-fried"></i> Menu</a></li>
+                <li><a href="admin_settings.html"><i class="bi bi-gear"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="admin-header">
+                <h2>Dashboard Overview</h2>
+                <div class="admin-alert" id="dbStatusAlert">
+                    Database: <span class="badge bg-success">Connected</span>
+                </div>
             </div>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                <h1 class="h2 mt-3">Dashboard</h1>
-                
-                <div class="row my-4">
-                    <div class="col-md-3">
-                        <div class="card text-white bg-primary">
-                            <div class="card-body">
-                                <h5>Today's Orders</h5>
-                                <h2 id="todayOrders">12</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- 3 more stat cards -->
+            <!-- Stats Cards -->
+            <div class="admin-stats">
+                <div class="stat-card">
+                    <h3 id="todayOrders">0</h3>
+                    <p>Today's Orders</p>
                 </div>
+                <!-- 3 more stat cards -->
+            </div>
 
-                <div class="card">
-                    <div class="card-body">
-                        <canvas id="salesChart" height="200"></canvas>
-                    </div>
-                </div>
-            </main>
-        </div>
+            <!-- Recent Orders Table -->
+            <div class="admin-table-container">
+                <table class="admin-table" id="recentOrders">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Loaded via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
     </div>
 
-    <script src="../js/bootstrap.bundle.min.js"></script>
-    <script src="../js/admin-dashboard.js"></script>
+    <script src="../js/admin_dashboard.js"></script>
 </body>
 </html>
